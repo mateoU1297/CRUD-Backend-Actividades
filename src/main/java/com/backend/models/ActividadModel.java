@@ -11,10 +11,10 @@ public class ActividadModel {
     @Column(unique = true, nullable = false)
     private Long id;
 
-    @Column(name="nombre", nullable = false)
+    @Column(nullable = false)
     private String nombre;
 
-    @Column(name="descripcion", nullable = false)
+    @Column(nullable = false)
     private String descripcion;
 
     @Column(nullable = false)
@@ -23,7 +23,10 @@ public class ActividadModel {
     @Column(name="fecha_ejecucion", nullable = false)
     private String fechaEjecucion;
 
-    @OneToOne()
+    @Column(name="id_empleado", nullable = false)
+    private Integer idEmpleado;
+
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="id_empleado", nullable = false, referencedColumnName = "id", insertable = false, updatable = false)
     private EmpleadoModel empleado;
 
@@ -65,6 +68,14 @@ public class ActividadModel {
 
     public void setFechaEjecucion(String fechaEjecucion) {
         this.fechaEjecucion = fechaEjecucion;
+    }
+
+    public Integer getidEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setidEmpleado(Integer idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
     public EmpleadoModel getEmpleado() {

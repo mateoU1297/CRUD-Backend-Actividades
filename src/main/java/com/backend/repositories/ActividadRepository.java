@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ActividadRepository extends CrudRepository<ActividadModel, Long>{
     
-    @Query(value = "SELECT * FROM empleados e WHERE e.nombre LIKE CONCAT('%',LOWER(:nombre),'%');", nativeQuery = true)
+    @Query(value = "SELECT * FROM actividades a WHERE a.nombre LIKE CONCAT('%',LOWER(:nombre),'%');", nativeQuery = true)
     Iterable<ActividadModel> findByName(String nombre);
 }

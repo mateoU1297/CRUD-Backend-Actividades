@@ -3,6 +3,8 @@ package com.backend.controllers;
 import com.backend.models.ActividadModel;
 import com.backend.services.ActividadService;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,6 +36,11 @@ public class ActividadController {
     @DeleteMapping( path = "delete/{id}")
     public boolean deleteActividad(@PathVariable("id") Long id){
         return this.actividadService.deleteActividad(id);
+    }
+
+    @GetMapping( path = "find-by-id/{id}")
+    public Optional<ActividadModel> findById(@PathVariable("id") Long id){
+        return this.actividadService.findById(id);
     }
 
     @GetMapping( path = "find-by-name/{nombre}")

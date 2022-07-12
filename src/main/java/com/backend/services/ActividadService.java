@@ -3,6 +3,8 @@ package com.backend.services;
 import com.backend.models.ActividadModel;
 import com.backend.repositories.ActividadRepository;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,10 @@ public class ActividadService {
         }catch(Exception err){
             return false;
         }
+    }
+
+    public Optional<ActividadModel> findById(Long id){
+        return this.actividadRepository.findById(id);
     }
 
     public Iterable<ActividadModel> findByName(String nombre){
